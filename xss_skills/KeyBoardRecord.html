@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Demo</title>
+	<meta charset="utf-8">
+<!-- 	Warning: if the page miss the tag of <meta charset="*"> this won't work, try to add it by yourself
+			 Because the original function: keydown keypress keyup need it . I thought =.= -->
+</head>
+<body>
+	<script type="text/javascript">  
+	var keystring = "";
+	function $(s){return document.getElementById(s)?document.getElementById(s):s;}  
+	function keypress(e)  
+	{  
+	　 var currKey=0,CapsLock=0,e=e||event;  
+	　 currKey=e.keyCode||e.which||e.charCode;  	  
+	　 keyName = String.fromCharCode(currKey)+",";
+	　 keystring += keyName;  
+	}  
+	function keydown(e)  
+	{  
+	　 var e=e||event;  
+	　 var currKey=e.keyCode||e.which||e.charCode;  	　  
+	　 $("content").innerHTML=keystring;  
+	}  
+	function keyup(e)  
+	{  
+	　 $("content").innerHTML=keystring;  
+	}  
+	document.onkeypress=keypress;  
+	document.onkeydown =keydown;  
+	document.onkeyup =keyup;  
+	</script>  
+	<input type="text" />  
+	<input type="button" value="clear" onclick="$('content').innerHTML = '';keystring = '';"/>  
+	<br/>pressed:<span id="content"></span> 
+</body>
+</html>
